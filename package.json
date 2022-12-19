@@ -8,5 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "ngraph.graph": "^20.0.1",
+    "ngraph.path": "^1.4.0"
+  }
 }

@@ -46,3 +46,26 @@ export async function fileLinesBy(filepath, count = 1) {
   return result
 }
 
+
+export async function fileLinesGroupBy(filepath, splitCb) {
+  const file = await open(resolve(`${RESOURCES}/${filepath}`))
+  const result = []
+  let current = []
+
+  for await (const line of file.readLines()) {
+
+    if (splitCb(line)) {
+      result.push(current)
+      current = []
+      continue
+    }
+
+    current.push(line)
+  }
+
+  if (current.length > 0) {
+    result.push(current)
+  }
+
+  return result
+}
